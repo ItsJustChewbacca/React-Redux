@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
+import Post from './components/Post.jsx';
+
 
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
           <Route exact path='/' component={ Home }/>
           <Route path='/about' component={ About }/>
           <Route path='/contact' component={ Contact }/>
+          {/* Route paramter*/}
+          <Route path="/:post_id" component={Post} />
         </div>
       </BrowserRouter>
     );
