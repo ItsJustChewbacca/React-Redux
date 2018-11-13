@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Logo from '../logo.png'
+import Logo from '../logo.png';
+//connecting component to redux store
+import { connect } from 'react-redux';
 
 
 class Home extends Component {
-  state = {
-    posts: [ ]
-  }
-  componentDidMount(){
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(res => {
-        console.log(res)
-        this.setState({
-          posts: res.data.slice(0, 10)
-        })
-      })
-  }
+  //Don't need this dummy data after loading in redux store
+
+  // state = {
+  //   posts: [ ]
+  // }
+  // componentDidMount(){
+  //   axios.get('https://jsonplaceholder.typicode.com/posts')
+  //     .then(res => {
+  //       console.log(res)
+  //       this.setState({
+  //         posts: res.data.slice(0, 10)
+  //       })
+  //     })
+  // }
 
   render() {
-    const { posts } = this.state
+    console.log(this.props)
+    const { posts } = this.props
     const postList = !posts.length  ? (
       <div className="center"> No posts yet</div>
     ) : (
@@ -45,5 +50,15 @@ class Home extends Component {
     )
   }
 }
+//Grabbing store state and mapping the data to the props
+const mapStatetoProps = (state) => {
+  return {
+    posts: state.posts
+  }
+}
 
-export default Home
+//Using higher order component to wrap home compoonent in redux store
+export default connect(mapStatetoProps)(Home)
+
+
+
