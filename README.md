@@ -1,1 +1,1 @@
-# Creating React Application using Redux store
+# React Application using Redux store
