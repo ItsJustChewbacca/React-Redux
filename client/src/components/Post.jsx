@@ -22,6 +22,11 @@ class Post extends Component {
   //   })
   // }
 
+  handleCLick = () => {
+    this.props.deletePost(this.props.post.id)
+    this.props.history.push('/')
+  }
+
   render() {
   console.log(this.props)
   console.log(this.props.post)
@@ -29,6 +34,11 @@ class Post extends Component {
         <div className="post">
           <h4 className="center">{this.props.post.title}</h4>
             <p>{this.props.post.body} </p>
+            <div className="center">
+              <button className="btn grey" onClick={this.handleCLick}>
+                Delete Post
+              </button>
+            </div>
         </div>
       ) : (
         <div className="center">Loading Post...</div>
