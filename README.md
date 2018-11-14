@@ -1,1 +1,1 @@
-# React2
+# Creating React Application using Redux store
